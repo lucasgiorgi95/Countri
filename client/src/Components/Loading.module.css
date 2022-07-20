@@ -1,0 +1,19 @@
+.h1{
+    font-size: 50px;
+    color: rgba(14, 2, 81, 0.59);
+}
+
+.loading{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+
+}
+.img{
+height: 200px;
+width: 250px;
+
+
+}
