@@ -4,21 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
-import {store} from './Redux/Store'
-import { BrowserRouter as Router } from 'react-router-dom';
-import axios from 'axios';
-import dotenv from "dotenv";
-dotenv.config();
-
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
-
+import {store} from './Redux/store/index.js'
+import {BrowserRouter} from 'react-router-dom'
 
 ReactDOM.render(
-  <Provider store={store}>  
-  <Router>
-    <App />
-  </Router>
-  </Provider>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />   
+    </BrowserRouter>
+  </Provider>
+    ,
   document.getElementById('root')
 );
 

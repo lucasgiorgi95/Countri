@@ -1,29 +1,23 @@
-import React from "react";
-import styles from './Paginado.module.css'
+import React from 'react'
 
+function Paginado({countryPerPage, allCountry, paginado}) {
 
-export default function Paginado({ allCountries,setActualPage}){
-    console.log('countrypage',allCountries)
-    const pageNumber = []
-
-    
-    for (let i = 1; i <= Math.ceil(allCountries/10); i++) {
-        pageNumber.push(i)
+    const numbers = []
+    for(let i = 0 ; i <=Math.ceil(allCountry/countryPerPage)-1; i++){
+      numbers.push(i+1)
     }
-    const paginado = (pageNumber) => {
-        setActualPage(pageNumber);
-    }
-
-    return(
-        <nav>
-            <ul className={styles.ul}>
-                <li className={styles.li}>
-                    {pageNumber && pageNumber.map(n => {
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                      return  <button className={styles.button} key={n} onClick={() => paginado(n)}>{n}</button>
-                    })}
-                </li>
-            </ul>
-        </nav>
-    )
+  return (
+    <nav>
+        <ul>
+        {
+         numbers && numbers.map(number =>{
+            return(
+             <button className='btn' key={number} onClick={()=>paginado(number)}><span>{number}</span></button>
+            )})
+        }
+        </ul>
+    </nav>
+  )
 }
+
+export default Paginado

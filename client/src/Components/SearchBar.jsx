@@ -1,50 +1,27 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getCountriesName } from "../Redux/Actions";
-import styles from "./SearchBar.module.css";
+import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
+import { getCountriesName } from '../Redux/action/Actions'
 
-export default function SearchBar({ actualPage }) {
-  const dispatch = useDispatch();
-  // console.log('actualpage', setActualPage)
+const SearchBar = () => {
+    const dispatch = useDispatch()
+    const [name, setName] = useState('')
 
-  //Creo el stado local para ir guardando lo que va escribiendo el usuario:
-  const [name, setName] = useState("");
+    function handleInputChange(e){
+        e.preventDefault()
+        setName(e.target.value)
 
-  //Creo un handle que cada vez que escriba en el searchbar lo guarda en el estado:
-  const handleInput = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
-  };
-
-  //Despacho la acción una vez submiteado:
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name) {
-      alert("Complete name");
-    } else {
-      dispatch(getCountriesName(name));
     }
+    function handleSubmit(e){
+        e.preventDefault()
+        dispatch(getCountriesName(name))
 
-    setName("");
-    actualPage(1);
-  };
-
+    }
   return (
-    <form>
-      <input
-        type="text"
-        placeholder="Search countries here..."
-        value={name}
-        onChange={(e) => handleInput(e)}
-        autoComplete="off"
-      />
-      <button
-        className={styles.button}
-        type="submit"
-        onClick={(e) => handleSubmit(e)}
-      >
-        Search
-      </button>
-    </form>
-  );
+    <div>
+        <input type="text" placeholder='Buscar...'  onChange={(e)=>handleInputChange(e)}/>
+        <button className='btnHome' type='submit' onClick={(e)=>handleSubmit(e)}>Buscar</button>
+    </div>
+  )
 }
+
+export default SearchBar

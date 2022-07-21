@@ -1,9 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCountries, postActivity } from "../Redux/Actions";
+import { getAllCountries, postActivity } from "../Redux/action/Actions";
 import { Link, useHistory } from "react-router-dom";
-import styles from "./CreateActivity.module.css";
 
 export const validate = (input) => {
   // console.log(activities);
@@ -150,11 +149,11 @@ export default function CreateActivity() {
   };
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.formComponent}>
-        <div className={styles.inputComponent}>
-          <div className={styles.inputComponent}>
-            <label className={styles.formLabel}>Name:</label>
+    <div>
+      <form onSubmit={handleSubmit} >
+        <div >
+          <div >
+            <label >Name:</label>
             <input
               type="text"
               value={input.name}
@@ -162,13 +161,12 @@ export default function CreateActivity() {
               onChange={handleChange}
               required
             />
-            {errors.name && <p className={styles.errors}>{errors.name}</p>}
+            {errors.name && <p>{errors.name}</p>}
           </div>
         </div>
-        <div className={styles.inputComponent}>
-          <label className={styles.formLabel}>Description:</label>
+        <div >
+          <label >Description:</label>
           <input
-          className={styles.inputText}
             type="text"
             value={input.description}
             name="description"
@@ -176,11 +174,11 @@ export default function CreateActivity() {
             required
           />
           {errors.description && (
-            <p className={styles.errors}>{errors.description}</p>
+            <p>{errors.description}</p>
           )}
         </div>
-        <div className={styles.inputComponent}>
-          <label className={styles.formLabel}>Difficulty:</label>
+        <div >
+          <label>Difficulty:</label>
           <input
             type="number"
             value={input.difficulty}
@@ -192,11 +190,11 @@ export default function CreateActivity() {
             max="5"
           />
           {errors.difficulty && (
-            <p className={styles.errors}>{errors.difficulty}</p>
+            <p >{errors.difficulty}</p>
           )}
         </div>
-        <div className={styles.inputComponent}>
-          <label className={styles.formLabel}>Duration:</label>
+        <div>
+          <label >Duration:</label>
           <input
             type="number"
             value={input.duration}
@@ -207,14 +205,14 @@ export default function CreateActivity() {
             min="1"
             max="48"
           />
-          <label className={styles.formLabel}>Hs</label>
+          <label>Hs</label>
           {errors.duration && (
-            <p className={styles.errors}>{errors.duration}</p>
+            <p >{errors.duration}</p>
           )}
         </div>
         <div>
-          <label className={styles.labelSeason}>Season:</label>
-          <label className={styles.labelSeason}>
+          <label >Season:</label>
+          <label >
             <input
               type="checkbox"
               value="winter"
@@ -223,7 +221,7 @@ export default function CreateActivity() {
             />
             Winter
           </label>
-          <label className={styles.labelSeason}>
+          <label >
             <input
               type="checkbox"
               value="summer"
@@ -232,7 +230,7 @@ export default function CreateActivity() {
             />
             Summer
           </label>
-          <label className={styles.labelSeason}>
+          <label >
             <input
               type="checkbox"
               value="autumn"
@@ -242,7 +240,7 @@ export default function CreateActivity() {
             Autumn
           </label>
 
-          <label className={styles.labelSeason}>
+          <label>
             <input
               type="checkbox"
               value="spring"
@@ -251,11 +249,11 @@ export default function CreateActivity() {
             />
             Spring
           </label>
-          {errors.season && <p className={styles.errors}>{errors.season}</p>}
+          {errors.season && <p>{errors.season}</p>}
         </div>
-        <div className={styles.inputComponent}>
-          <label className={styles.formLabel}>Countries:</label>
-          <select className={styles.selectForm} onChange={handleSelect}>
+        <div >
+          <label >Countries:</label>
+          <select  onChange={handleSelect}>
             <option hidden value="Paises">
               Select here
             </option>
@@ -266,17 +264,17 @@ export default function CreateActivity() {
             ))}
           </select>
           {errors.countries && (
-            <p className={styles.errors}>{errors.countries}</p>
+            <p >{errors.countries}</p>
           )}
           <div>
             {input.countries.map((country) => {
               return (
-                <div key={country} className={styles.countrySelected}>
+                <div key={country}>
                   <div>
                     <button onClick={() => onClose(country)}>X</button>
                   </div>
                   <div>
-                    <h4 className={styles.h4}>{country + ", "}</h4>
+                    <h4>{country + ", "}</h4>
                   </div>
                 </div>
               );
@@ -285,13 +283,13 @@ export default function CreateActivity() {
           <ul></ul>
         </div>
         <div>
-          <button className={styles.buttonCreate} type="submit">
+          <button type="submit">
             Create Activity
           </button>
 
-          <div className={styles.buttonsContainer}>
-            <Link to="/home" className={styles.Link}>
-              <button className={styles.buttonCreate}>Return Home</button>
+          <div>
+            <Link to="/home" >
+              <button>Return Home</button>
             </Link>
           </div>
         </div>
