@@ -96,7 +96,19 @@ const continents =['america','africa','asia','oceania','europa']
      <Link to = '/CreateActivity'> <button className='btnHome'>Crear Actividad </button></Link>
       <button  className='btnHome' onClick={e=>{handleClick(e)}}>Volver a cargar paises</button>
         <div>
-        <select onChange={e => handleFilterActivity(e)} >
+        {/* <select onChange={e => handleFilterActivity(e)} >
+          <option value={"default"} hidden>
+            Activity
+          </option>
+          <option value="All">All</option>
+          {activities &&
+            activities.map((activity, index) => (
+              <option key={index} value={activity.name}>
+                {activity.name}
+              </option>
+            ))}
+        </select> */}
+        <select onChange={e => handleFilterActivity(e)}>
           <option value={"default"} hidden>
             Activity
           </option>
